@@ -42,6 +42,7 @@ public class ControleurServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path=request.getServletPath();
+		//Afficher tous les articles
 		if(path.equals("/index.do")) {
 			ArticleModel model=new ArticleModel();
 			List<Article> articles=metier.getAllArticles();
@@ -49,6 +50,7 @@ public class ControleurServlet extends HttpServlet {
 			request.setAttribute("model", model);
 			request.getRequestDispatcher("articles.jsp").forward(request, response);
 		}
+		//Chercher un article en utilisant um mot cle
 		else if(path.equals("/chercher.do")) {
 			String motCle=request.getParameter("motCle");
 			ArticleModel model=new ArticleModel();
@@ -58,6 +60,7 @@ public class ControleurServlet extends HttpServlet {
 			request.setAttribute("model", model);
 			request.getRequestDispatcher("articles.jsp").forward(request, response);
 		}
+		//Ajouter un article
 		else if(path.equals("/saisie.do")) {
 			request.setAttribute("article", new Article());
 			request.getRequestDispatcher("SaisieArticle.jsp").forward(request, response);
@@ -70,12 +73,14 @@ public class ControleurServlet extends HttpServlet {
 			request.setAttribute("article", a);
 			request.getRequestDispatcher("Confirmation.jsp").forward(request, response);
 		}
+		//Supprimer un article
 		else if(path.equals("/Supprimer.do")) {
 			Long id=Long.parseLong(request.getParameter("id"));
 			metier.deleteArticle(id);
 			//request.getRequestDispatcher("produits.jsp").forward(request, response);
 			response.sendRedirect("chercher.do?motCle=");
 		}
+		//Mettre a jour un article
 		else if(path.equals("/Edit.do")) {
 			Long id=Long.parseLong(request.getParameter("id"));
 			Article a=metier.getArticle(id);
@@ -92,6 +97,7 @@ public class ControleurServlet extends HttpServlet {
 			request.setAttribute("article", a);
 			request.getRequestDispatcher("Confirmation.jsp").forward(request, response);
 		}
+		//Error handler
 		else {
 			response.sendError(Response.SC_NOT_FOUND);
 		}

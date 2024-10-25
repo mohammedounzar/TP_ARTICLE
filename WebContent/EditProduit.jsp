@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <title>Articles</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
 				<input type="text" name="contenu" class="form-control" value="${article.contenu}" required/><br>
 				<span></span>
 
-				<button type="submit">Mettre à jour</button>
+				<button type="submit" class="btn btn-primary">Mettre à jour</button>
 				</form>
 
 </body>

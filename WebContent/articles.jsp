@@ -6,13 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Articles</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 </head>
 <body>
 <%@include file="header.jsp" %>
 	<form method="GET" action="chercher.do">
 		<label>Mot Clé</label> <input type="text" name="motCle"
 			value="${model.motCle}" />
-		<button type="submit">Chercher</button>
+		<button type="submit" class="btn btn-primary">Chercher</button>
 	</form>
 	<hr>
 	<h2>Les articles disponibles</h2>

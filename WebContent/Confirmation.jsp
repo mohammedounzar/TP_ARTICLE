@@ -10,7 +10,7 @@
 </head>
 <body>
 <%@include file="header.jsp" %>
-			<h1>Confirmation</h1>
+			<h1 class="panel-heading">Confirmation</h1>
 			<label>ID:</label>
 			<label>${article.id}</label><br>
 
